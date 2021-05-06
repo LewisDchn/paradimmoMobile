@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 
+/**
+ * Cette méthode récupère les informations de toutes les propriétées dand la base de donnée
+ * @returns View
+ * retourne la liste de toutes les propriétées
+ */
 const Property = () => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
@@ -8,7 +13,7 @@ const Property = () => {
     useEffect(() => {
         fetch('http://no.api.paradimmo.manusien-ecolelamanu.fr/public/property', {
             method :'GET',
-            headres: {
+            headers: {
                 'Accept': 'application/json',
                 'content-Type': 'application/json'
             }
