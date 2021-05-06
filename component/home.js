@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet,View, Text, Image, ScrollView, StatusBar } from 'react-native';
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
-import { LocaleConfig } from 'react-native-calendars';
-
+import { Calendar, CalendarList, Agenda } from "react-native-calendars";
+import { LocaleConfig } from "react-native-calendars";
 
 const Home = () => {
     return (
