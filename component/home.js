@@ -94,7 +94,8 @@ const Home = () => {
                             monthFormat={'MMMM yyyy'}
                             // Gestionnaire qui est exécuté lorsque le mois visible change dans le calendrier.
                             onMonthChange={(month) => { console.log('month changed', month) }}
-
+                        />
+{/*                         
                         // Cacher les flèches de navigation du mois. Default = false
                         /* hideArrows={false}
                          // Remplace les flèches par défaut par des flèches personnalisées (la direction peut être 'gauche' ou 'droite')
@@ -137,8 +138,9 @@ const Home = () => {
                          // Max amount of months allowed to scroll to the past. Default = 50
                          pastScrollRange={24}
                          // Max amount of months allowed to scroll to the future. Default = 50
-                         futureScrollRange={24} */
-                        />
+                         futureScrollRange={24} 
+                        /> 
+
                         <Agenda
                             // La liste des éléments qui doivent être affichés dans l'agenda. Si vous voulez rendre l'élément comme une date vide 
                             // la valeur de la clé de date doit être un tableau vide []. S'il n'existe aucune valeur pour la clé de date, il est 
@@ -158,7 +160,7 @@ const Home = () => {
                             // Rappel qui est appelé lorsque le jour change tout en faisant défiler la liste de l'agenda 
                             onDayChange={(day) => { console.log('jour changé') }}
                             // Jour 
-                            selected={}
+                            selected={'2020-01-01'}
                             // Date minimum pouvant être sélectionnée, les dates antérieures à minDate seront grisées. Par défaut = undefined 
                             minDate={'2020-01-01'}
                             // Date maximum pouvant être sélectionnée, les dates après maxDate seront grisées. Valeur par défaut= undefined 
@@ -166,44 +168,45 @@ const Home = () => {
                             // Nombre maximal de mois autorisé pour faire défiler vers le passé.{50}
                             //  Nombre maximal de mois autorisés à défiler vers le futur. Valeur par défaut = 50 
                             futureScrollRange={50}
-                            // Spécifiez comment chaque élément doit être rendu dans l'agenda
-                            renderItem={(item, firstItemInDay) => { return (<View />); }}
-                            // Spécifiez comment chaque date doit être rendue. jour peut être indéfini si l'élément n'est pas le premier ce jour-là.
-                            renderDay={(day, item) => { return (<View />); }}
-                            // Spécifie comment le contenu de date vide sans élément doit être rendu.
-                            renderEmptyDate={() => { return (<View />); }}
-                            // Spécifie à quoi le bouton d'agenda doit ressembler à
-                            renderKnob={() => { return (<View />); }}
-                            // Spécifiez ce qui doit être rendu à la place de ActivityIndicator
-                            renderEmptyData={() => { return (<View />); }}
-                            // Spécifiez votre fonction de comparaison d'éléments pour augmenter les performances
-                            rowHasChanged={(r1, r2) => { return r1.texte !== r2.text }}
-                            // Cacher le bouton de la molette. Valeur par défaut= false 
-                            hideKnob={true}
-                            // Par défaut, les dates de l'agenda sont marquées si elles comportent au moins un élément, mais vous pouvez le remplacer si nécessaire
-                            markedDates={{
-                                '2012-05-16': {selected: true, marked: true},
-                                '2012-05-17': {marked: true},
-                                '2012-05-18': {disabled: true}
-                              }}
-                            // Si désactivéByDefault = {true} dates marquées comme non désactivé sera activé. Default = false
-                            disabledByDefault={true}
-                            // Si fourni, un RefreshControl standard sera ajouté pour la fonctionnalité "Pull to Refresh". Assurez-vous également de régler correctement l'hélice de rafraîchissement.
-                            onRefresh={() => console.log('refreshing ...')}
-                            // Définissez ceci sur true en attendant de nouvelles données à partir d'une actualisation.
-                            Refreshing={false}
-                            // Ajoutez un composant RefreshControl personnalisé, utilisé pour fournir une fonctionnalité d'extraction pour actualiser le ScrollView.
-                            refreshControl={null}
-                            // Thème du thème de l' agenda
-                            theme={{
-                                // ...calendarTheme,
-                                agendaDayTextColor: 'yellow',
-                                agendaDayNumColor: 'green',
-                                agendaTodayColor: 'red',
-                                agendaKnobColor: 'blue'
-                            }}
-                        // Style de style de conteneur d'agenda = {{}}
-                        />
+                            // Spécifiez comment chaque élément doit être rendu dans l'agenda }
+                        //     renderItem={(item, firstItemInDay) => { return (<View />); }}
+                        //     // Spécifiez comment chaque date doit être rendue. jour peut être indéfini si l'élément n'est pas le premier ce jour-là.
+                        //     renderDay={(day, item) => { return (<View />); }}
+                        //     // Spécifie comment le contenu de date vide sans élément doit être rendu.
+                        //     renderEmptyDate={() => { return (<View />); }}
+                        //     // Spécifie à quoi le bouton d'agenda doit ressembler à
+                        //     renderKnob={() => { return (<View />); }}
+                        //     // Spécifiez ce qui doit être rendu à la place de ActivityIndicator
+                        //     renderEmptyData={() => { return (<View />); }}
+                        //     // Spécifiez votre fonction de comparaison d'éléments pour augmenter les performances
+                        //     rowHasChanged={(r1, r2) => { return r1.texte !== r2.text }}
+                        //     // Cacher le bouton de la molette. Valeur par défaut= false 
+                        //     hideKnob={true}
+                        //     // Par défaut, les dates de l'agenda sont marquées si elles comportent au moins un élément, mais vous pouvez le remplacer si nécessaire
+                        //     markedDates={{
+                        //         '2012-05-16': {selected: true, marked: true},
+                        //         '2012-05-17': {marked: true},
+                        //         '2012-05-18': {disabled: true}
+                        //       }}
+                        //     // Si désactivéByDefault = {true} dates marquées comme non désactivé sera activé. Default = false
+                        //     disabledByDefault={true}
+                        //     // Si fourni, un RefreshControl standard sera ajouté pour la fonctionnalité "Pull to Refresh". Assurez-vous également de régler correctement l'hélice de rafraîchissement.
+                        //     onRefresh={() => console.log('refreshing ...')}
+                        //     // Définissez ceci sur true en attendant de nouvelles données à partir d'une actualisation.
+                        //     Refreshing={false}
+                        //     // Ajoutez un composant RefreshControl personnalisé, utilisé pour fournir une fonctionnalité d'extraction pour actualiser le ScrollView.
+                        //     refreshControl={null}
+                        //     // Thème du thème de l' agenda
+                        //     theme={{
+                        //         // ...calendarTheme,
+                        //         agendaDayTextColor: 'yellow',
+                        //         agendaDayNumColor: 'green',
+                        //         agendaTodayColor: 'red',
+                        //         agendaKnobColor: 'blue'
+                        //     }}
+                        // // Style de style de conteneur d'agenda = {{}}
+                        ///> 
+                        */}
                     </View>
                 </View>
                 <View style={[styles.thirdContainer, { flexDirection: 'row' }]}>
