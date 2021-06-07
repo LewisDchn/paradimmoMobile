@@ -8,7 +8,7 @@ import { LocaleConfig } from 'react-native-calendars';
 const Home = () => {
     return (
         <View style={styles.baseContainer}>
-            <Image style={styles.logo} source={require('../assets/logo-text.png')} />
+            <Image style={styles.logo} source={require('../assets/images/logo-text.png')} />
             <View style={[styles.container]}>
                 <View style={styles.quotes}>
 

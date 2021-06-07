@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Home from "./component/home";
 import Properties from "./component/Properties";
+import Property from "./component/Property";
 
 function HomeScreen() {
 	return <Home />;
@@ -12,6 +13,10 @@ function HomeScreen() {
 
 function PropertiesScreen() {
 	return <Properties />;
+}
+
+function PropertyScreen() {
+	return <Property />;
 }
 
 const Tab = createBottomTabNavigator();
@@ -72,6 +77,7 @@ export default function App() {
 			>
 				<Tab.Screen name='Accueil' component={HomeScreen} />
 				<Tab.Screen name='Annonces' component={PropertiesScreen} />
+				<Tab.Screen name='Property' component={PropertyScreen} />
 			</Tab.Navigator>
 		</NavigationContainer>
 	);
