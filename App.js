@@ -4,23 +4,47 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Home from "./component/home";
-import Properties from "./component/Properties";
-import Property from "./component/Property";
+import Propertys from "./component/Propertys";
+import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 
+/**
+ * La méthode affiche l'écran d'Accueil de l'application
+ * @returns Home
+ * Retourne l'écran Home
+ */
 function HomeScreen() {
 	return <Home />;
 }
 
-function PropertiesScreen() {
-	return <Properties />;
+/**
+ *
+ * @returns Property
+ */
+function PropertysScreen() {
+	return <Propertys />;
 }
 
-function PropertyScreen() {
-	return <Property />;
-}
-
+/**
+ * Navbar - barre de navigation
+ */
 const Tab = createBottomTabNavigator();
 
+/**
+ * Thème de l'application
+ */
+const theme = {
+	...DefaultTheme,
+	roundness: 2,
+	colors: {
+		...DefaultTheme.colors,
+		primary: "#157347",
+		accent: "#EFA30A",
+	},
+};
+
+/**
+ * CSS Styles
+ */
 const styles = StyleSheet.create({
 	baseContainer: {
 		backgroundColor: "#157347",
@@ -34,39 +58,9 @@ const styles = StyleSheet.create({
 
 export default function App() {
 	return (
-		<NavigationContainer
-			tabBarOptions={{
-				style: {
-					backgroundColor: "blue",
-					height: 55,
-					paddingTop: 10,
-					paddingBottom: 5,
-				},
-			}}
-		>
-			<Tab.Navigator
-				screenOptions={({ route }) => ({
-					tabBarIcon: ({ focused, color, size }) => {
-						let iconName;
-
-						if (route.name === "Accueil") {
-							iconName = focused ? "home" : "home-outline";
-						} else if (route.name === "Annonces") {
-							iconName = focused ? "search" : "search-outline";
-						}
-
-						// You can return any component that you like here!
-						return <Ionicons name={iconName} size={size} color={color} />;
-					},
-				})}
+		<PaperProvider theme={theme}>
+			<NavigationContainer
 				tabBarOptions={{
-					activeTintColor: "#157347",
-					inactiveTintColor: "gray",
-					labelStyle: {
-						fontSize: 14,
-						fontWeight: "bold",
-						marginTop: 5,
-					},
 					style: {
 						backgroundColor: "white",
 						height: 55,
@@ -75,10 +69,41 @@ export default function App() {
 					},
 				}}
 			>
-				<Tab.Screen name='Accueil' component={HomeScreen} />
-				<Tab.Screen name='Annonces' component={PropertiesScreen} />
-				<Tab.Screen name='Property' component={PropertyScreen} />
-			</Tab.Navigator>
-		</NavigationContainer>
+				<Tab.Navigator
+					screenOptions={({ route }) => ({
+						tabBarIcon: ({ focused, color, size }) => {
+							let iconName;
+
+							if (route.name === "Accueil") {
+								iconName = focused ? "home" : "home-outline";
+							} else if (route.name === "Annonces") {
+								iconName = focused ? "search" : "search-outline";
+							}
+
+							// You can return any component that you like here!
+							return <Ionicons name={iconName} size={size} color={color} />;
+						},
+					})}
+					tabBarOptions={{
+						activeTintColor: "#157347",
+						inactiveTintColor: "gray",
+						labelStyle: {
+							fontSize: 14,
+							fontWeight: "bold",
+							marginTop: 5,
+						},
+						style: {
+							backgroundColor: "white",
+							height: 55,
+							paddingTop: 10,
+							paddingBottom: 5,
+						},
+					}}
+				>
+					<Tab.Screen name='Accueil' component={HomeScreen} />
+					<Tab.Screen name='Annonces' component={PropertysScreen} />
+				</Tab.Navigator>
+			</NavigationContainer>
+		</PaperProvider>
 	);
 }
