@@ -7,6 +7,7 @@ import {
 	Text,
 	Image,
 	View,
+	TouchableOpacity,
 } from "react-native";
 import {
 	DefaultTheme,
@@ -21,13 +22,14 @@ import "intl/locale-data/jsonp/en";
  * @returns View
  * Retourne l'écran des propriétés
  */
-const ItemProperty = ({ data }) => {
+const ItemProperty = ({ data, navigation }) => {
 	/**
 	 * La méthode affiche un outlined gris
 	 * @returns Button
 	 * Bouton outlined grey
 	 */
-	const ButtonGreyOutlined = () => (
+	const ButtonGreyOutlined = () => {
+		return(
 		<Button
 			icon='email-outline'
 			mode='outlined'
@@ -36,20 +38,23 @@ const ItemProperty = ({ data }) => {
 			accessibilityLabel='Ajouter la propriété aux favoris'
 			color='grey'
 			style={styles.ButtonGreyOutlined}
+			onPress={() => navigation.navigate('Property', {data: data})}
 		>
 			Messages
 		</Button>
-	);
+		);
+	};
 	/**
 	 * La méthode affiche un bouton outlined rouge
 	 * @returns Button
 	 * Bouton outlined danger
 	 */
-	const ButtonDangerOutlined = () => (
+	const ButtonDangerOutlined = () => {
+		return(
 		<Button
 			icon='heart-outline'
 			mode='outlined'
-			onPress={() => console.log("Pressed")}
+			onPress={() => console.log('test')} 
 			title='Favoris'
 			accessibilityLabel='Ajouter la propriété aux favoris'
 			color='#cd0000'
@@ -57,7 +62,8 @@ const ItemProperty = ({ data }) => {
 		>
 			Favoris
 		</Button>
-	);
+		)
+	};
 
 	var price = new Intl.NumberFormat("fr-FR", {
 		style: "currency",
@@ -66,7 +72,7 @@ const ItemProperty = ({ data }) => {
 	price = price.substr(1, price.length);
 
 	return (
-		<View style={styles.property}>
+		<View  style={styles.property}>
 			<Image
 				source={require("../assets/images/maison1.jpg")}
 				style={styles.image}
@@ -77,7 +83,8 @@ const ItemProperty = ({ data }) => {
 			</View>
 			<Text style={styles.description}>Description courte</Text>
 			<View style={styles.containerButton}>
-				<ButtonGreyOutlined />
+				<Button onPress={() => navigation.navigate('Property', {data: data})}>Détail</Button>
+				{/* <ButtonGreyOutlined /> */}
 				<ButtonDangerOutlined />
 			</View>
 		</View>
@@ -90,7 +97,6 @@ const styles = StyleSheet.create({
 	},
 	property: {
 		height: 310,
-		shadowColor: "black",
 		borderWidth: 1,
 		borderColor: "grey",
 		borderRadius: 10,
@@ -104,7 +110,6 @@ const styles = StyleSheet.create({
 		borderTopRightRadius: 10,
 	},
 	containerTitle: {
-		display: "flex",
 		flexDirection: "row",
 		justifyContent: "space-between",
 		marginLeft: 17,
@@ -126,7 +131,6 @@ const styles = StyleSheet.create({
 		marginTop: 8,
 	},
 	containerButton: {
-		display: "flex",
 		flexDirection: "row",
 		justifyContent: "space-between",
 		marginTop: 20,
