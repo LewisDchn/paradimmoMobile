@@ -3,26 +3,12 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import Home from "./component/home";
+import HomeScreen from "./component/home";
 import Propertys from "./component/Propertys";
+import Navigator from "./component/navigator";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
+import createNavigationProperty from "./component/navigator";
 
-/**
- * La méthode affiche l'écran d'Accueil de l'application
- * @returns Home
- * Retourne l'écran Home
- */
-function HomeScreen() {
-	return <Home />;
-}
-
-/**
- *
- * @returns Property
- */
-function PropertysScreen() {
-	return <Propertys />;
-}
 
 /**
  * Navbar - barre de navigation
@@ -101,7 +87,8 @@ export default function App() {
 					}}
 				>
 					<Tab.Screen name='Accueil' component={HomeScreen} />
-					<Tab.Screen name='Annonces' component={PropertysScreen} />
+					<Tab.Screen name='Annonces' component={Navigator} />
+					{/* <Tab.Screen name='Property' component={Navigator} /> */}
 				</Tab.Navigator>
 			</NavigationContainer>
 		</PaperProvider>
