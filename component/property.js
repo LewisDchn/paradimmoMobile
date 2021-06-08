@@ -1,77 +1,57 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View, StyleSheet, Image } from 'react-native';
+import { ActivityIndicator, FlatList, Text, View, StyleSheet, Image, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
+
 
 /**
- * Cette méthode récupère les informations de toutes les propriétées dand la base de donnée
+ * Cette méthode récupère les informations de toutes les propriétées dans la base de donnée
  * @returns View
  * retourne la liste de toutes les propriétées
  */
-const Property = () => {
-    const [isLoading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        fetch('http://no.api.paradimmo.manusien-ecolelamanu.fr/public/propertyCriteria/1', {
-            method :'GET',
-            headers: {
-                'Accept': 'application/json',
-                'content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(json => setData(json))
-        .catch((error) => console.error(error))
-        .finally(() => setLoading(false))
-    })
+const Property = ({route}) => {
+    var details = route.params.data.item;
     return (
         <View style={styles.baseContainer}>
-            {isLoading ? <ActivityIndicator/> : (
-                <FlatList
-                    data={data}
-                    keyExtractor={({ id }, index) => id}
-                    renderItem={({ item }) => (
-                        <View style={styles.container}>
-                            <Image style={styles.propertyCaroussel} source={require('../assets/images/maisonExterieur.jpg')} />
-                            <Text style={styles.propertyType}>Maison à vendre</Text>
-                            <Text style={styles.surfaceMetrage}>5 pièces - 130m²</Text>
-                            <Text style={styles.surfaceMetrage}>{item.city}</Text>
-                            <Text style={styles.surfaceMetrage}>ref: {item.reference}</Text>
-                            <Text style={styles.propertyPrice}>{item.price} €</Text>
-                            <View>
-                                <Text style={styles.propertyDescription}>
-                                    {item.description}
-                                </Text>
-                            </View>
-                            <View style={styles.criteriaPropertyList}>
-                                <Text style={styles.criteriaPropertyOne}>Construit en 1900</Text>
-                                <Text style={styles.criteriaPropertyOne}>Construit en 1900</Text>
-                                <Text style={styles.criteriaPropertyOne}>Construit en 1900</Text>
-                                <Text style={styles.showMoreCriteriaButton }>Voir plus</Text>
-                            </View>
-                            <Text style={styles.energeticTitle}>Bilan énergétique</Text>
-                            <View style={styles.energeticLine}>
-                                <View style={ styles.energeticLineDescription }>
-                                    <Text style={ styles.energeticLineDescription }>Consommation énergétique</Text>
-                                </View>
-                                <View style={ styles.energeticLineNote }>
-                                    <Text style={ styles.energeticLineNoteText }>A</Text>
-                                </View>
-                            </View>
-                            <View style={styles.energeticLine}>
-                                <View style={ styles.energeticLineDescription }>
-                                    <Text style={ styles.energeticLineDescription }>Emission GES</Text>
-                                </View>
-                                <View style={ styles.energeticLineNote}>
-                                    <Text style={ styles.energeticLineNoteText }>A</Text>
-                                </View>
-                            </View>
-                            <View>
-                                <Image style={ styles.propertyMap } source={require('../assets/images/exempleMap.jpg')} />
-                            </View>
-                        </View>
-                    )}
-                />
-            )}
+            <View style={styles.container}>
+                <Image style={styles.propertyCaroussel} source={require('../assets/images/maisonExterieur.jpg')} />
+                <Text style={styles.propertyType}>Maison à vendre</Text>
+                <Text style={styles.surfaceMetrage}>5 pièces - 130m²</Text>
+                <Text style={styles.surfaceMetrage}>{details.city}</Text>
+                <Text style={styles.surfaceMetrage}>ref: {details.reference}</Text>
+                <Text style={styles.propertyPrice}>{details.price} €</Text>
+                <View>
+                    <Text style={styles.propertyDescription}>
+                        {details.description}
+                    </Text>
+                </View>
+                <View style={styles.criteriaPropertyList}>
+                    <Text style={styles.criteriaPropertyOne}>Construit en 1900</Text>
+                    <Text style={styles.criteriaPropertyOne}>Construit en 1900</Text>
+                    <Text style={styles.criteriaPropertyOne}>Construit en 1900</Text>
+                    <Text style={styles.showMoreCriteriaButton }>Voir plus</Text>
+                </View>
+                <Text style={styles.energeticTitle}>Bilan énergétique</Text>
+                <View style={styles.energeticLine}>
+                    <View style={ styles.energeticLineDescription }>
+                        <Text style={ styles.energeticLineDescription }>Consommation énergétique</Text>
+                    </View>
+                    <View style={ styles.energeticLineNote }>
+                        <Text style={ styles.energeticLineNoteText }>A</Text>
+                    </View>
+                </View>
+                <View style={styles.energeticLine}>
+                    <View style={ styles.energeticLineDescription }>
+                        <Text style={ styles.energeticLineDescription }>Emission GES</Text>
+                    </View>
+                    <View style={ styles.energeticLineNote}>
+                        <Text style={ styles.energeticLineNoteText }>A</Text>
+                    </View>
+                </View>
+                <View>
+                    <Image style={ styles.propertyMap } source={require('../assets/images/exempleMap.jpg')} />
+                </View>
+            </View>
         </View>
     );
 }
