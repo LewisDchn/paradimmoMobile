@@ -7,6 +7,7 @@ import {
 	Text,
 	Image,
 	View,
+	ScrollView,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
@@ -56,24 +57,25 @@ const Properties = () => {
 	 */
 	const ListPropertys = () => {
 		return (
-			<SafeAreaView style={styles.listPropertys}>
+			<View>
 				<FlatList
 					data={dataPropertys}
 					renderItem={(item) => <ItemProperty data={item} />}
-					keyExtractor={(item) => item.id}
+					keyExtractor={(item) => item.id.toString()}
+					contentContainerStyle={{
+						flexGrow: 1,
+					}}
 				/>
-			</SafeAreaView>
+			</View>
 		);
 	};
 
 	return (
-		<PaperProvider theme={theme}>
-			<View style={styles.baseContainer}>
-				<View style={styles.container}>
-					<ListPropertys />
-				</View>
+		<View style={styles.baseContainer}>
+			<View style={styles.container}>
+				<ListPropertys />
 			</View>
-		</PaperProvider>
+		</View>
 	);
 };
 
@@ -82,7 +84,7 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 	},
 	baseContainer: {
-		flex: 1,
+		//flex: 1,
 		backgroundColor: "#157347",
 		paddingLeft: 8,
 		paddingRight: 8,
