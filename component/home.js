@@ -43,8 +43,11 @@ const Home = () => {
                     </View>
                     <View style={styles.recentProperty}>
                         <Image style={styles.imageRecentProperty} source={require('../assets/images/maison1.jpg')} />
-                        <FontAwesome style={styles.logoProperty} name="compass" size={24} color="white" />
-                        <Text style={styles.textRecentProperty}>Image propriété</Text>
+                        
+                        <Text style={styles.textRecentProperty}><FontAwesome style={styles.logoProperty} name="compass" size={24} color="black" /> Amiens</Text>
+                        <Text>
+                            500000
+                        </Text>
                     </View>
                 </View>
             </ScrollView>
@@ -141,7 +144,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         marginBottom: 20,
     },
-    // 3 eme conteneur -------------------------------
+    // 3eme conteneur ---------------------------------------------------
     thirdContainer: {
         marginTop: 30,
         height: 200,
@@ -171,24 +174,25 @@ const styles = StyleSheet.create({
     recentProperty: {
         // flexDirection: "row",
         flex: 0.5,
-        backgroundColor: "#30a25e",
+        backgroundColor: "#f5f5f5",
         shadowColor: "black",
         // height: '25%',
         borderRadius: 30,
         margin: 10,
     },
-    textRecentProperty: {
-        // alignSelf: "center",
-        marginLeft: 10,
-        // marginTop: 10,
-        color: "#fff",
-        fontWeight: "bold",
-    },
     imageRecentProperty: {
         alignSelf: "center",
-        borderRadius: 30,
-        width: 160,
-        height: 100,
-    }
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        width: 158,
+        flex: 0.6,
+        // height: 90,
+    },
+    textRecentProperty: {
+        alignSelf: "center",
+        // marginLeft: 5,
+        color: "black",
+        fontWeight: "bold",
+    },
 });
 export default Home;

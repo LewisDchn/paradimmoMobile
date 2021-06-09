@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, Image, View } from "react-native";
 import {
-	StyleSheet,
 	ActivityIndicator,
 	SafeAreaView,
 	FlatList,
-	Text,
-	Image,
-	View,
 	TouchableOpacity,
 	DefaultTheme,
 	Button,
