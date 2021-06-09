@@ -12,6 +12,7 @@ import {
 } from "react-native-paper";
 import "intl";
 import "intl/locale-data/jsonp/en";
+import Price from './Price';
 
 /**
  * La méthode affiche la liste des propriétés
@@ -60,13 +61,7 @@ const ItemProperty = ({ data, navigation }) => {
 			</Button>
 		);
 	};
-
-	var price = new Intl.NumberFormat("fr-FR", {
-		style: "currency",
-		currency: "EUR",
-	}).format(data.item.price);
-	price = price.substr(1, price.length);
-
+	
 	return (
 		<View style={styles.property}>
 			<Image
@@ -77,7 +72,7 @@ const ItemProperty = ({ data, navigation }) => {
 				<Text numberOfLines={2} style={styles.title}>
 					Maison incroyablement belle toute équipée
 				</Text>
-				<Text style={styles.price}>{price}€</Text>
+				<Text style={styles.price}><Price data={data.item.price} /></Text>
 			</View>
 			<Text numberOfLines={2} style={styles.description}>
 				Maison spacieuse et lumineuse dans un quartier tranquille, loin de toute
@@ -128,8 +123,6 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		fontWeight: "bold",
 		color: "#157347",
-		borderWidth: 1,
-		borderColor: "#cd0000",
 	},
 	description: {
 		fontSize: 16,

@@ -34,7 +34,7 @@ const Properties = ({ navigation }) => {
 			.then((json) => setData(json))
 			.catch((error) => console.error(error))
 			.finally(() => setLoading(false));
-	});
+	}, []);
 
 	return (
 		<View style={styles.baseContainer}>

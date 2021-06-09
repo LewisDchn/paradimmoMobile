@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Text, View, StyleSheet, Image, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Price from './Price';
 
 
 
@@ -19,7 +20,7 @@ const Property = ({route}) => {
                 <Text style={styles.surfaceMetrage}>5 pièces - 130m²</Text>
                 <Text style={styles.surfaceMetrage}>{details.city}</Text>
                 <Text style={styles.surfaceMetrage}>ref: {details.reference}</Text>
-                <Text style={styles.propertyPrice}>{details.price} €</Text>
+                <Text style={styles.propertyPrice}><Price data={details.price} /></Text>
                 <View>
                     <Text style={styles.propertyDescription}>
                         {details.description}
