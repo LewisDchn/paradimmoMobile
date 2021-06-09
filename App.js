@@ -88,7 +88,6 @@ export default function App() {
 				>
 					<Tab.Screen name='Accueil' component={HomeScreen} />
 					<Tab.Screen name='Annonces' component={Navigator} />
-					{/* <Tab.Screen name='Property' component={Navigator} /> */}
 				</Tab.Navigator>
 			</NavigationContainer>
 		</PaperProvider>
