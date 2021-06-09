@@ -7,18 +7,18 @@ import {
 	Text,
 	Image,
 	View,
+	ScrollView,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 import ItemProperty from "./ItemProperty";
-
 
 /**
  * La méthode affiche la vue des propriétés
  * @returns View
  * Retourne la vue de l'écran contenant toutes les propriétés
  */
-const Properties = ({navigation}) => {
+const Properties = ({ navigation }) => {
 	const [isLoading, setLoading] = useState(true);
 	const [dataPropertys, setData] = useState([]);
 
@@ -37,15 +37,17 @@ const Properties = ({navigation}) => {
 	});
 
 	return (
-			<View style={styles.baseContainer}>
-				<View style={styles.container}>
+		<View style={styles.baseContainer}>
+			<View style={styles.container}>
 				<FlatList
 					data={dataPropertys}
-					renderItem={(item) => <ItemProperty data={item} navigation={navigation} />}
+					renderItem={(item) => (
+						<ItemProperty data={item} navigation={navigation} />
+					)}
 					keyExtractor={(item) => item.id.toString()}
 				/>
-				</View>
 			</View>
+		</View>
 	);
 };
 
@@ -54,13 +56,12 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 	},
 	baseContainer: {
-		flex: 1,
+		//flex: 1,
 		backgroundColor: "#157347",
 		paddingLeft: 8,
 		paddingRight: 8,
 	},
 	container: {
-
 		backgroundColor: "#fff",
 		marginTop: 25,
 		borderTopLeftRadius: 10,

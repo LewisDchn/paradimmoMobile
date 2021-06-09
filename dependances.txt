@@ -9,3 +9,4 @@ npm install --save-dev @iconify/react @iconify-icons/ion
 npm install react-native-paper
 npm install react-native-intl --save
 npm install -g expo-cli ------>>>> attention a ne pas faire !!!
+npm install @react-navigation/stack

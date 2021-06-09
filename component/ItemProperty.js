@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, Image, View } from "react-native";
 import {
 	StyleSheet,
 	ActivityIndicator,
@@ -8,11 +9,10 @@ import {
 	Image,
 	View,
 	TouchableOpacity,
-} from "react-native";
-import {
 	DefaultTheme,
 	Button,
-	Provider as PaperProvider,
+	IconButton,
+	Colors as PaperProvider,
 } from "react-native-paper";
 import "intl";
 import "intl/locale-data/jsonp/en";
@@ -29,19 +29,19 @@ const ItemProperty = ({ data, navigation }) => {
 	 * Bouton outlined grey
 	 */
 	const ButtonGreyOutlined = () => {
-		return(
-		<Button
-			icon='email-outline'
-			mode='outlined'
-			onPress={() => console.log("Pressed")}
-			title='Message'
-			accessibilityLabel='Ajouter la propriété aux favoris'
-			color='grey'
-			style={styles.ButtonGreyOutlined}
-			onPress={() => navigation.navigate('Property', {data: data})}
-		>
-			Messages
-		</Button>
+		return (
+			<Button
+				icon='email-outline'
+				mode='outlined'
+				onPress={() => console.log("Pressed")}
+				title='Message'
+				accessibilityLabel='Ajouter la propriété aux favoris'
+				color='grey'
+				style={styles.ButtonGreyOutlined}
+				onPress={() => navigation.navigate("Property", { data: data })}
+			>
+				Messages
+			</Button>
 		);
 	};
 	/**
@@ -50,19 +50,19 @@ const ItemProperty = ({ data, navigation }) => {
 	 * Bouton outlined danger
 	 */
 	const ButtonDangerOutlined = () => {
-		return(
-		<Button
-			icon='heart-outline'
-			mode='outlined'
-			onPress={() => console.log('test')} 
-			title='Favoris'
-			accessibilityLabel='Ajouter la propriété aux favoris'
-			color='#cd0000'
-			style={styles.ButtonDangerOutlined}
-		>
-			Favoris
-		</Button>
-		)
+		return (
+			<Button
+				icon='heart-outline'
+				mode='outlined'
+				onPress={() => console.log("test")}
+				title='Favoris'
+				accessibilityLabel='Ajouter la propriété aux favoris'
+				color='#cd0000'
+				style={styles.ButtonDangerOutlined}
+			>
+				Favoris
+			</Button>
+		);
 	};
 
 	var price = new Intl.NumberFormat("fr-FR", {
@@ -72,18 +72,26 @@ const ItemProperty = ({ data, navigation }) => {
 	price = price.substr(1, price.length);
 
 	return (
-		<View  style={styles.property}>
+		<View style={styles.property}>
 			<Image
 				source={require("../assets/images/maison1.jpg")}
 				style={styles.image}
 			/>
 			<View style={styles.containerTitle}>
-				<Text style={styles.title}>Titre</Text>
+				<Text numberOfLines={2} style={styles.title}>
+					Maison incroyablement belle toute équipée
+				</Text>
 				<Text style={styles.price}>{price}€</Text>
 			</View>
-			<Text style={styles.description}>Description courte</Text>
+			<Text numberOfLines={2} style={styles.description}>
+				Maison spacieuse et lumineuse dans un quartier tranquille, loin de toute
+				nuisance sonores. L'ensemble des comodités se trouve dans un rayon de
+				1km.
+			</Text>
 			<View style={styles.containerButton}>
-				<Button onPress={() => navigation.navigate('Property', {data: data})}>Détail</Button>
+				<Button onPress={() => navigation.navigate("Property", { data: data })}>
+					Détail
+				</Button>
 				{/* <ButtonGreyOutlined /> */}
 				<ButtonDangerOutlined />
 			</View>
@@ -118,38 +126,32 @@ const styles = StyleSheet.create({
 	title: {
 		fontSize: 16,
 		maxWidth: "70%",
+		fontWeight: "bold",
 	},
 	price: {
 		fontSize: 16,
 		fontWeight: "bold",
 		color: "#157347",
+		borderWidth: 1,
+		borderColor: "#cd0000",
 	},
 	description: {
 		fontSize: 16,
-		fontWeight: "bold",
 		marginLeft: 17,
 		marginTop: 8,
 	},
 	containerButton: {
 		flexDirection: "row",
-		justifyContent: "space-between",
-		marginTop: 20,
+		justifyContent: "flex-end",
+		marginTop: 0,
 		marginLeft: 17,
 		marginRight: 17,
 	},
-	ButtonDangerOutlined: {
-		borderColor: "#cd0000",
-		color: "#cd0000",
-		borderWidth: 1,
-		borderRadius: 5,
-		width: "47%",
+	ButtonFavoris: {
+		width: "auto",
 	},
-	ButtonGreyOutlined: {
-		borderColor: "grey",
-		color: "grey",
-		borderWidth: 1,
-		borderRadius: 5,
-		width: "47%",
+	ButtonMessage: {
+		width: "auto",
 	},
 });
 
