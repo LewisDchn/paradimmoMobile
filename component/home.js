@@ -1,9 +1,11 @@
 import React from "react";
-import { StyleSheet, View, Text, Image, ScrollView } from "react-native";
+import { StyleSheet, View, Text, Image, ScrollView, Badge,} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Calendars from "./calendars";
-import Agendas from "./agendas";
+import Agendas from "./agenda";
+import Price from './Price';
+
+
 
 const Home = () => {
     return (
@@ -24,16 +26,14 @@ const Home = () => {
                     <View style={styles.recentEmail}>
                         <FontAwesome style={styles.logoEmail} name="envelope" size={24} color="white" />
                         <Text style={styles.textRecentEmail}>Derniers E-mails
+                        {/* <Badge value="99+" status="error" /> */}
                         </Text>
                     </View>
                 </View>
                 <View style={styles.scdContainer}>
-                    <View style={styles.calendar}>
-                        <Calendars />
-                    </View>
-                    {/* <View style={styles.agenda}>
+                    <ScrollView style={styles.agenda}>
                         <Agendas />
-                    </View> */}
+                    </ScrollView>
                 </View>
                 <View style={[styles.thirdContainer, { flexDirection: 'row' }]}>
                     <View style={styles.rdv}>
@@ -45,15 +45,13 @@ const Home = () => {
                         <Image style={styles.imageRecentProperty} source={require('../assets/images/maison1.jpg')} />
                         
                         <Text style={styles.textRecentProperty}><FontAwesome style={styles.logoProperty} name="compass" size={24} color="black" /> Amiens</Text>
-                        <Text>
-                            500000
-                        </Text>
+                        <Text style={styles.taro}></Text>
                     </View>
                 </View>
             </ScrollView>
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
      // haut de page ----------------------
@@ -71,6 +69,7 @@ const styles = StyleSheet.create({
     // 1er conteneur blanc-----------------------
     container: {
         // minHeight: '75%',
+        // flex:1,
         backgroundColor: "#fff",
         borderRadius: 30,
         resizeMode: "cover",
@@ -98,6 +97,11 @@ const styles = StyleSheet.create({
         margin: 10,
         resizeMode: "cover",
         overflow: "hidden",
+        shadowColor: '#000',
+        shadowOffset: { width: 20, height: 1 },
+        shadowOpacity: 1,
+        shadowRadius: 30,
+        elevation: 5,
     },
     textOpinion: {
         alignSelf: "center",
@@ -112,6 +116,11 @@ const styles = StyleSheet.create({
         // height: '25%',
         borderRadius: 30,
         margin: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 20, height: 1 },
+        shadowOpacity: 1,
+        shadowRadius: 30,
+        elevation: 5,
     },
     textRecentEmail: {
         // alignSelf: "center",
@@ -127,7 +136,8 @@ const styles = StyleSheet.create({
     },
     // 2eme conteneur calendrier et agenda ---------------------------------
     scdContainer: {
-        flex: 1
+        flex: 1,
+        // overflow: "hidden"
     },
     calendar: {
         // flex: 1,
@@ -136,13 +146,26 @@ const styles = StyleSheet.create({
         shadowColor: "black",
         borderRadius: 30,
         marginBottom: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 20, height: 1 },
+        shadowOpacity: 1,
+        shadowRadius: 30,
+        elevation: 5,
+        overflow:"hidden"
     },
     agenda: {
-        // alignSelf: "center",
+        //alignSelf: "center",
         // backgroundColor: '#30a25e',
+        // flex:1,
         shadowColor: "black",
         borderRadius: 30,
         marginBottom: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 20, height: 1 },
+        shadowOpacity: 1,
+        shadowRadius: 30,
+        elevation: 5,
+        // overflow:"hidden"
     },
     // 3eme conteneur ---------------------------------------------------
     thirdContainer: {
@@ -158,6 +181,11 @@ const styles = StyleSheet.create({
         margin: 10,
         resizeMode: "cover",
         overflow: "hidden",
+        shadowColor: '#000',
+        shadowOffset: { width: 20, height: 1 },
+        shadowOpacity: 1,
+        shadowRadius: 30,
+        elevation: 5,
     },
     firstRdv: {
         height: "40%",
@@ -179,6 +207,11 @@ const styles = StyleSheet.create({
         // height: '25%',
         borderRadius: 30,
         margin: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 20, height: 1 },
+        shadowOpacity: 1,
+        shadowRadius: 30,
+        elevation: 5,
     },
     imageRecentProperty: {
         alignSelf: "center",
@@ -194,5 +227,8 @@ const styles = StyleSheet.create({
         color: "black",
         fontWeight: "bold",
     },
+    taro: {
+        alignSelf: "center"
+    }
 });
 export default Home;

@@ -10,6 +10,7 @@ import Price from './Price';
  * @returns View
  * retourne la liste de toutes les propriétées
  */
+
 const Property = ({route}) => {
     var details = route.params.data.item;
     return (
