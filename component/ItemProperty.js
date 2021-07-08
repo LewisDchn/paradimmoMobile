@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, Image, View } from "react-native";
 import {
-	ActivityIndicator,
-	SafeAreaView,
-	FlatList,
-	TouchableOpacity,
-	DefaultTheme,
 	Button,
 	IconButton,
 	Colors as PaperProvider,
 } from "react-native-paper";
 import "intl";
 import "intl/locale-data/jsonp/en";
-import Price from './Price';
+import Price from "./Price";
 
 /**
  * La méthode affiche la liste des propriétés
@@ -20,48 +15,21 @@ import Price from './Price';
  * Retourne l'écran des propriétés
  */
 const ItemProperty = ({ data, navigation }) => {
+	const [favoris, setFavoris] = useState();
 	/**
-	 * La méthode affiche un outlined gris
-	 * @returns Button
-	 * Bouton outlined grey
+	 * Constructeur
 	 */
-	const ButtonGreyOutlined = () => {
-		return (
-			<Button
-				icon='email-outline'
-				mode='outlined'
-				onPress={() => console.log("Pressed")}
-				title='Message'
-				accessibilityLabel='Ajouter la propriété aux favoris'
-				color='grey'
-				style={styles.ButtonGreyOutlined}
-				onPress={() => navigation.navigate("Property", { data: data })}
-			>
-				Messages
-			</Button>
-		);
+	useEffect(() => {
+		// setter de ma variable
+		setFavoris(false);
+		// pour un onClose() : faire un return
+	}, []);
+
+	// fonction
+	const addFavoris = () => {
+		favoris ? setFavoris(false) : setFavoris(true);
 	};
-	/**
-	 * La méthode affiche un bouton outlined rouge
-	 * @returns Button
-	 * Bouton outlined danger
-	 */
-	const ButtonDangerOutlined = () => {
-		return (
-			<Button
-				icon='heart-outline'
-				mode='outlined'
-				onPress={() => console.log("test")}
-				title='Favoris'
-				accessibilityLabel='Ajouter la propriété aux favoris'
-				color='#cd0000'
-				style={styles.ButtonDangerOutlined}
-			>
-				Favoris
-			</Button>
-		);
-	};
-	
+
 	return (
 		<View style={styles.property}>
 			<Image
@@ -72,7 +40,9 @@ const ItemProperty = ({ data, navigation }) => {
 				<Text numberOfLines={2} style={styles.title}>
 					Maison incroyablement belle toute équipée
 				</Text>
-				<Text style={styles.price}><Price data={data.item.price} /></Text>
+				<Text style={styles.price}>
+					<Price data={data.item.price} />
+				</Text>
 			</View>
 			<Text numberOfLines={2} style={styles.description}>
 				Maison spacieuse et lumineuse dans un quartier tranquille, loin de toute
@@ -83,8 +53,14 @@ const ItemProperty = ({ data, navigation }) => {
 				<Button onPress={() => navigation.navigate("Property", { data: data })}>
 					Détail
 				</Button>
-				{/* <ButtonGreyOutlined /> */}
-				<ButtonDangerOutlined />
+				<IconButton
+					icon={favoris ? "heart" : "heart-outline"}
+					title='Favoris'
+					color='#cd0000'
+					size={20}
+					accessibilityLabel='Ajouter la propriété aux favoris'
+					onPress={() => addFavoris()}
+				/>
 			</View>
 		</View>
 	);
@@ -95,7 +71,7 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 	},
 	property: {
-		height: 310,
+		height: 340,
 		borderWidth: 1,
 		borderColor: "grey",
 		borderRadius: 10,
@@ -104,7 +80,7 @@ const styles = StyleSheet.create({
 	image: {
 		width: "100%",
 		height: 170,
-		marginBottom: 10,
+		marginBottom: 20,
 		borderTopLeftRadius: 10,
 		borderTopRightRadius: 10,
 	},
@@ -113,6 +89,7 @@ const styles = StyleSheet.create({
 		justifyContent: "space-between",
 		marginLeft: 17,
 		marginRight: 17,
+		marginBottom: 7,
 	},
 	title: {
 		fontSize: 16,
@@ -132,7 +109,7 @@ const styles = StyleSheet.create({
 	containerButton: {
 		flexDirection: "row",
 		justifyContent: "flex-end",
-		marginTop: 0,
+		marginTop: 5,
 		marginLeft: 17,
 		marginRight: 17,
 	},
