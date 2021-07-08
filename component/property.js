@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View, StyleSheet, Image, Button } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 import Price from './Price';
 
 
@@ -13,47 +12,50 @@ import Price from './Price';
 const Property = ({route}) => {
     var details = route.params.data.item;
     return (
-        <View style={styles.baseContainer}>
-            <View style={styles.container}>
-                <Image style={styles.propertyCaroussel} source={require('../assets/images/maisonExterieur.jpg')} />
-                <Text style={styles.propertyType}>Maison à vendre</Text>
-                <Text style={styles.surfaceMetrage}>5 pièces - 130m²</Text>
-                <Text style={styles.surfaceMetrage}>{details.city}</Text>
-                <Text style={styles.surfaceMetrage}>ref: {details.reference}</Text>
-                <Text style={styles.propertyPrice}><Price data={details.price} /></Text>
-                <View>
-                    <Text style={styles.propertyDescription}>
-                        {details.description}
-                    </Text>
-                </View>
-                <View style={styles.criteriaPropertyList}>
-                    <Text style={styles.criteriaPropertyOne}>Construit en 1900</Text>
-                    <Text style={styles.criteriaPropertyOne}>Construit en 1900</Text>
-                    <Text style={styles.criteriaPropertyOne}>Construit en 1900</Text>
-                    <Text style={styles.showMoreCriteriaButton }>Voir plus</Text>
-                </View>
-                <Text style={styles.energeticTitle}>Bilan énergétique</Text>
-                <View style={styles.energeticLine}>
-                    <View style={ styles.energeticLineDescription }>
-                        <Text style={ styles.energeticLineDescription }>Consommation énergétique</Text>
+        <ScrollView>
+            <View style={styles.baseContainer}>
+                <View style={styles.container}>
+                    <Image style={styles.propertyCaroussel} source={require('../assets/images/maisonExterieur.jpg')} />
+                    <Text style={styles.propertyType}>Maison à vendre</Text>
+                    <Text style={styles.surfaceMetrage}>5 pièces - 130m²</Text>
+                    <Text style={styles.surfaceMetrage}>{details.address}</Text>
+                    <Text style={styles.surfaceMetrage}>{details.postalCode} {details.city}</Text>
+                    <Text style={styles.surfaceMetrage}>ref: {details.reference}</Text>
+                    <Text style={styles.propertyPrice}><Price data={details.price} /></Text>
+                    <View>
+                        <Text style={styles.propertyDescription}>
+                            {details.description}
+                        </Text>
                     </View>
-                    <View style={ styles.energeticLineNote }>
-                        <Text style={ styles.energeticLineNoteText }>A</Text>
+                    <View style={styles.criteriaPropertyList}>
+                        {
+                            details.property_criteria.map((criterias) => <Text style={styles.criteriaPropertyOne}>{criterias.name} {criterias.pivot.value}</Text>)
+                        }
+                        <Text style={styles.showMoreCriteriaButton }>Voir plus</Text>
                     </View>
-                </View>
-                <View style={styles.energeticLine}>
-                    <View style={ styles.energeticLineDescription }>
-                        <Text style={ styles.energeticLineDescription }>Emission GES</Text>
+                    <Text style={styles.energeticTitle}>Bilan énergétique</Text>
+                    <View style={styles.energeticLine}>
+                        <View style={ styles.energeticLineDescription }>
+                            <Text style={ styles.energeticLineDescription }>Consommation énergétique</Text>
+                        </View>
+                        <View style={ styles.energeticLineNote }>
+                            <Text style={ styles.energeticLineNoteText }>A</Text>
+                        </View>
                     </View>
-                    <View style={ styles.energeticLineNote}>
-                        <Text style={ styles.energeticLineNoteText }>A</Text>
+                    <View style={styles.energeticLine}>
+                        <View style={ styles.energeticLineDescription }>
+                            <Text style={ styles.energeticLineDescription }>Emission GES</Text>
+                        </View>
+                        <View style={ styles.energeticLineNote}>
+                            <Text style={ styles.energeticLineNoteText }>A</Text>
+                        </View>
                     </View>
-                </View>
-                <View>
-                    <Image style={ styles.propertyMap } source={require('../assets/images/exempleMap.jpg')} />
+                    <View>
+                        <Image style={ styles.propertyMap } source={require('../assets/images/exempleMap.jpg')} />
+                    </View>
                 </View>
             </View>
-        </View>
+        </ScrollView>
     );
 }
 const styles = StyleSheet.create({

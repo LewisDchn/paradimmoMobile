@@ -1,13 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import HomeScreen from "./component/home";
-import Propertys from "./component/Propertys";
 import Navigator from "./component/navigator";
+import Profil from "./component/Profil";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
-import createNavigationProperty from "./component/navigator";
 
 
 /**
@@ -88,6 +87,7 @@ export default function App() {
 				>
 					<Tab.Screen name='Accueil' component={HomeScreen} />
 					<Tab.Screen name='Annonces' component={Navigator} />
+					<Tab.Screen name='Profil' component={Profil} />
 				</Tab.Navigator>
 			</NavigationContainer>
 		</PaperProvider>

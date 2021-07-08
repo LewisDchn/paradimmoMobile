@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {
 	StyleSheet,
-	ActivityIndicator,
-	SafeAreaView,
 	FlatList,
-	Text,
-	Image,
 	View,
-	ScrollView,
 } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 import ItemProperty from "./ItemProperty";
 
 /**

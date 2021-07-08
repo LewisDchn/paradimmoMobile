@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, Text, View, StyleSheet, Image, Buttond } from 'react-native';
+import React from "react";
+import { Text } from 'react-native';
 
 const Price = ({data, decimal=false}) => {
     var decimal = decimal ? 2 : 0;
