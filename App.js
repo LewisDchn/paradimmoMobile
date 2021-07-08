@@ -86,12 +86,7 @@ export default function App() {
 					}}
 				>
 					<Tab.Screen name='Accueil' component={HomeScreen} />
-<<<<<<< HEAD
-					<Tab.Screen name='Annonces' component={Navigator} />
-					<Tab.Screen name='Profil' component={Profil} />
-=======
 					<Tab.Screen name='Annonces' component={Navigator}  options={{ tabBarBadge: "5" }}/>
->>>>>>> e9439cc48bd9c147ca01e5839d871eb6c760d5a0
 				</Tab.Navigator>
 			</NavigationContainer>
 		</PaperProvider>

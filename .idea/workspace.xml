@@ -7,17 +7,12 @@
     <list default="true" id="1830c33c-1a41-4783-9c01-4df1bd4f8717" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/component/Price.js" beforeDir="false" afterPath="$PROJECT_DIR$/component/Price.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/property.js" beforeDir="false" afterPath="$PROJECT_DIR$/component/property.js" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/component/agendas.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/component/calendars.js" beforeDir="false" afterPath="$PROJECT_DIR$/component/calendars.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/component/home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/property.js" beforeDir="false" afterPath="$PROJECT_DIR$/component/property.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
->>>>>>> e9439cc48bd9c147ca01e5839d871eb6c760d5a0
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
